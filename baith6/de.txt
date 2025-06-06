@@ -1,0 +1,92 @@
+THỰC HÀNH DJANGO FRAMEWORK – XML VÀ JSON
+
+Bài tập 1: Tạo và hiển thị file XML đơn giản
+Yêu cầu:
+1. Tạo một Django project và app tên là library.
+2. Tạo một view tên generate_xml có nhiệm vụ:
+o Tạo một file XML (books.xml) chứa danh sách 3 quyển sách.
+o Mỗi quyển sách gồm: title, author, year.
+3. Lưu file XML vào thư mục media/xml/.
+4. Tạo một view view_xml để đọc nội dung file XML và hiển thị ra HTML.
+Gợi ý:
+• Sử dụng xml.etree.ElementTree để tạo và phân tích cú pháp XML.
+• File XML ví dụ:
+<library>
+<book>
+<title>Django for Beginners</title>
+<author>William S. Vincent</author>
+<year>2022</year>
+</book>
+</library>
+
+Bài tập 2: Phân tích file XML và hiển thị dữ liệu có điều kiện
+Yêu cầu:
+1. Từ file books.xml đã có (ở bài 1), thêm ít nhất 5 quyển sách với các năm xuất
+bản khác nhau.
+2. Viết view recent_books:
+o Đọc file XML và lọc các sách có năm xuất bản >= 2020.
+o Trả về danh sách các sách đó dưới dạng bảng HTML.
+
+Gợi ý:
+
+• Duyệt từng node <book> và kiểm tra thẻ <year>.
+
+Bài tập 3: Biên tập file XML thông qua biểu mẫu HTML
+Yêu cầu:
+1. Tạo một form trong template cho phép người dùng nhập thông tin 1 quyển sách
+(title, author, year).
+2. Khi submit, thông tin sẽ được ghi thêm vào file books.xml (không xóa dữ liệu
+cũ).
+3. Tạo một view edit_books để:
+o Hiển thị tất cả sách trong file XML.
+o Cho phép xóa 1 quyển sách dựa vào title (hoặc ID nếu có).
+o Ghi lại file XML sau khi xóa.
+
+Gợi ý:
+• Sử dụng POST method để xử lý form.
+• Khi ghi thêm sách mới, parse XML, thêm node <book>, và ghi lại toàn bộ.
+• Khi xóa, lọc bỏ node khỏi cây XML rồi ghi lại file.
+
+Bài tập 4: Tạo và hiển thị thông tin sinh viên từ file JSON
+Yêu cầu:
+1. Tạo Django project và app tên là student_info.
+2. Tạo view save_students_json thực hiện:
+o Tạo file students.json chứa danh sách 5 sinh viên.
+o Mỗi sinh viên gồm: id, name, major, gpa.
+o Lưu file vào thư mục media/json/.
+3. Tạo view view_students_json thực hiện:
+o Đọc file JSON và hiển thị thông tin sinh viên ra template HTML dưới
+dạng bảng.
+
+Gợi ý:
+• Sử dụng thư viện json để dump() và load().
+
+• Mẫu dữ liệu:
+[
+{
+"id": 1,
+"name": "Nguyen Van A",
+"major": "Công nghệ thông tin",
+"gpa": 3.5
+}
+]
+
+Bài tập 5: Quản lý danh sách sản phẩm sử dụng JSON và Django Serializer
+Yêu cầu:
+1. Tạo model Product gồm các trường: id, name, price, stock.
+2. Tạo serializer ProductSerializer bằng serializers.ModelSerializer.
+3. Tạo 2 view:
+o export_products_to_json: Serialize toàn bộ sản phẩm trong DB thành
+JSON và ghi vào file products.json.
+o import_products_from_json: Đọc file products.json, deserialize dữ liệu
+và thêm vào database (chỉ thêm nếu id chưa tồn tại).
+
+4. Tạo giao diện đơn giản để:
+o Bấm nút Export để xuất dữ liệu.
+o Bấm nút Import để nạp lại dữ liệu từ file.
+
+Gợi ý:
+• Dùng ProductSerializer(instance, many=True).data để encode.
+• Dùng ProductSerializer(data=data, many=True) + is_valid() + save() để
+decode.
+• Có thể kết hợp thư mục media/json/ để lưu trữ.

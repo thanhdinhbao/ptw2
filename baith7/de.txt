@@ -1,0 +1,69 @@
+THỰC HÀNH DJANGO FRAMEWORK – DRF
+
+Bài 1 – “Hello API” & làm quen DRF
+Yêu cầu:
+1. django-admin startproject shop_api ➜ python manage.py startapp core.
+2. Cài djangorestframework, thêm vào INSTALLED_APPS.
+3. Tạo file views.py trong core:
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+@api_view(["GET"])
+def hello(request):
+return Response({"message": "Hello, DRF!"})
+4. Thêm URL:
+from django.urls import path
+from core.views import hello
+urlpatterns = [path("hello/", hello)]
+5. Chạy server, truy cập http://127.0.0.1:8000/hello/ → kiểm tra JSON.
+
+Bài 2 – Tạo Model, Serializer & ListAPIView
+Yêu cầu
+1. Trong core/models.py tạo lớp Product(name, price,
+created_at = auto_now_add).
+2. Chạy makemigrations & migrate; thêm vài bản ghi qua Django Admin hoặc
+shell.
+3. Tạo ProductSerializer (kế thừa serializers.ModelSerializer).
+4. Tạo view:
+
+from rest_framework import generics
+class ProductList(generics.ListAPIView):
+queryset = Product.objects.all()
+serializer_class = ProductSerializer
+5. Thêm URL path("products/", ProductList.as_view()).
+
+Bài 3 – Thêm Create & Retrieve
+Yêu cầu
+1. Viết ProductCreate(generics.CreateAPIView) tại URL /products/create/.
+2. Viết ProductDetail(generics.RetrieveAPIView) với lookup_field="id" tại URL
+/products/<int:id>/.
+3. Kiểm tra nhanh bằng curl hoặc Postman:
+o POST /products/create/ → thêm sản phẩm
+o GET /products/1/ → xem chi tiết
+
+Bài 4 – Update & Delete
+Yêu cầu
+1. Viết ProductUpdate(generics.UpdateAPIView) tại /products/<int:id>/update/.
+2. Viết ProductDelete(generics.DestroyAPIView) tại /products/<int:id>/delete/.
+3. Cập nhật serializer cho phép partial update (partial=True trong view hoặc dùng
+PATCH).
+4. Kiểm tra:
+o PATCH /products/1/update/ thay đổi price.
+o DELETE /products/1/delete/ xoá bản ghi.
+
+Bài 5 – Lọc đơn giản & Phân trang
+Yêu cầu
+1. Cài django-filter và thêm vào INSTALLED_APPS.
+2. Trong settings.py:
+REST_FRAMEWORK = {
+"DEFAULT_FILTER_BACKENDS":
+["django_filters.rest_framework.DjangoFilterBackend"],
+"DEFAULT_PAGINATION_CLASS":
+"rest_framework.pagination.PageNumberPagination",
+"PAGE_SIZE": 5,
+}
+3. Bổ sung filterset_fields = ["name", "price"] vào ProductList.
+4. Thử truy vấn:
+o /products/?name=Laptop
+o /products/?price__lte=1000
+o Xem phản hồi paginated (next, previous, results).

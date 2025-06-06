@@ -1,0 +1,64 @@
+Bài tập 1: Tạo form nhập liệu đơn giản
+Mục tiêu: Làm quen với forms.Form trong Django.
+Yêu cầu:
+1. Tạo một Django app tên là students.
+2. Tạo một form cho phép nhập thông tin sinh viên gồm: Họ tên, MSSV, Email.
+3. Hiển thị form trên một trang web (/student-form/).
+4. Khi submit, hiển thị lại thông tin vừa nhập ở trang kết quả.
+5. Sử dụng {{ form.as_p }} để hiển thị form.
+
+Bài tập 2: Tùy biến hiển thị form
+Mục tiêu: Tùy chỉnh các widget và style trong form.
+Yêu cầu:
+1. Từ bài tập 1, bổ sung:
+o Trường "Khoa" dạng dropdown (ChoiceField) với 3 giá trị: CNTT, Cơ
+khí, Điện tử.
+o Trường Email sử dụng TextInput với placeholder “Nhập email sinh
+viên”.
+
+2. Tùy chỉnh label và thêm CSS class form-control cho tất cả các input.
+3. Hiển thị form với {{ form }} từng field một để dễ tùy biến.
+
+Bài tập 3: Tạo form sử dụng ModelForm
+Mục tiêu: Sử dụng ModelForm để thao tác với database.
+Yêu cầu:
+1. Mở rộng app students đã được tạo từ Bài 1 và Bài 2.
+2. Trong Form StudentForm đã có (gồm: Họ tên, MSSV, Email, Khoa), thêm 3
+trường mới:
+o math: Điểm Toán
+o physics: Điểm Lý
+o chemistry: Điểm Hóa
+(Tất cả là số thực, giá trị từ 0 đến 10)
+
+3. Khi người dùng truy cập đường dẫn /student-score/, hiển thị form đã được cập
+nhật.
+4. Sau khi người dùng submit, xử lý và:
+o Tính điểm trung bình cộng của 3 môn.
+o Hiển thị lại toàn bộ thông tin đã nhập và điểm trung bình.
+o (Tùy chọn nâng cao) Hiển thị xếp loại theo điểm trung bình:
+ ≥ 8.0: Giỏi
+ 6.5–7.9: Khá
+ 5.0–6.4: Trung bình
+ < 5.0: Yếu
+
+Bài tập 4: Tạo form với nhiều loại widget
+Mục tiêu: Hiểu và sử dụng đa dạng các loại field và widget.
+Yêu cầu:
+1. Tạo form khảo sát người dùng với các trường sau:
+o Họ tên (TextInput)
+o Giới tính (RadioSelect)
+o Sở thích (MultipleChoiceField với CheckboxSelectMultiple)
+o Ngày sinh (DateField với widget DateInput)
+o Đăng ký nhận tin (BooleanField)
+2. Khi người dùng gửi form, hiển thị lại toàn bộ dữ liệu đã nhập.
+
+Bài tập 5: Tùy biến validate và xử lý lỗi form
+Mục tiêu: Hiểu cơ chế validation và xử lý lỗi trong form.
+Yêu cầu:
+1. Tạo form đăng ký người dùng gồm: Username, Password, Confirm Password,
+Email.
+2. Thực hiện các kiểm tra:
+o Username không được trùng với một danh sách các username bị cấm.
+o Password và Confirm Password phải giống nhau.
+o Email phải có đuôi là @student.edu.vn.
+3. Nếu có lỗi, hiển thị lỗi cụ thể ngay dưới từng trường.
