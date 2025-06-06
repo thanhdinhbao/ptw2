@@ -1,0 +1,31 @@
+<!-- templates/products/interface.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Quản lý sản phẩm</h2>
+    <div class="mb-3">
+        <a href="{% url 'export_products' %}" class="btn btn-success">📤 Export JSON</a>
+        <a href="{% url 'import_products' %}" class="btn btn-primary">📥 Import JSON</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>ID</th><th>Tên</th><th>Giá</th><th>Tồn kho</th></tr>
+        </thead>
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.stock }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

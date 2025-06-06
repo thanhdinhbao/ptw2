@@ -1,0 +1,24 @@
+<!-- students/templates/students/score_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nhập điểm sinh viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Form nhập điểm</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Tính điểm</button>
+    </form>
+</body>
+</html>

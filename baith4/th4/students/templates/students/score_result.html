@@ -1,0 +1,22 @@
+<!-- students/templates/students/score_result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết quả điểm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Thông tin sinh viên:</h2>
+    <ul>
+        <li><strong>Họ tên:</strong> {{ student.ho_ten }}</li>
+        <li><strong>MSSV:</strong> {{ student.mssv }}</li>
+        <li><strong>Email:</strong> {{ student.email }}</li>
+        <li><strong>Khoa:</strong> {{ student.get_khoa_display }}</li>
+        <li><strong>Toán:</strong> {{ student.math }}</li>
+        <li><strong>Lý:</strong> {{ student.physics }}</li>
+        <li><strong>Hóa:</strong> {{ student.chemistry }}</li>
+        <li><strong>Điểm trung bình:</strong> {{ average }}</li>
+        <li><strong>Xếp loại:</strong> {{ grade }}</li>
+    </ul>
+</body>
+</html>

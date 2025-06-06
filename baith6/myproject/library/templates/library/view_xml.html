@@ -1,0 +1,15 @@
+<!-- library/templates/library/view_xml.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách sách từ XML</title>
+</head>
+<body>
+    <h2>Danh sách sách</h2>
+    <ul>
+        {% for book in books %}
+            <li><strong>{{ book.title }}</strong> - {{ book.author }} ({{ book.year }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

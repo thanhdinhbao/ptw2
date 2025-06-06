@@ -1,0 +1,18 @@
+<!-- students/templates/students/survey_result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết quả khảo sát</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Kết quả khảo sát:</h2>
+    <ul>
+        <li><strong>Họ tên:</strong> {{ data.ho_ten }}</li>
+        <li><strong>Giới tính:</strong> {{ data.gioi_tinh }}</li>
+        <li><strong>Sở thích:</strong> {{ data.so_thich|join:", " }}</li>
+        <li><strong>Ngày sinh:</strong> {{ data.ngay_sinh }}</li>
+        <li><strong>Đăng ký nhận tin:</strong> {{ data.nhan_tin|yesno:"Có,Không" }}</li>
+    </ul>
+</body>
+</html>

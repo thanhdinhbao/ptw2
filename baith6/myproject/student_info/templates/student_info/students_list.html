@@ -1,0 +1,31 @@
+<!-- student_info/templates/student_info/students_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Danh sách sinh viên</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Ngành</th>
+                <th>GPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sv in students %}
+            <tr>
+                <td>{{ sv.id }}</td>
+                <td>{{ sv.name }}</td>
+                <td>{{ sv.major }}</td>
+                <td>{{ sv.gpa }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

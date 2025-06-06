@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Nguyen Van A",
+        "major": "Công nghệ thông tin",
+        "gpa": 3.5
+    },
+    {
+        "id": 2,
+        "name": "Tran Thi B",
+        "major": "Kinh tế",
+        "gpa": 3.8
+    },
+    {
+        "id": 3,
+        "name": "Le Van C",
+        "major": "Cơ khí",
+        "gpa": 2.9
+    },
+    {
+        "id": 4,
+        "name": "Pham Thi D",
+        "major": "Điện tử",
+        "gpa": 3.2
+    },
+    {
+        "id": 5,
+        "name": "Hoang Van E",
+        "major": "Quản trị",
+        "gpa": 3.6
+    }
+]
