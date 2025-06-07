@@ -1,14 +1,14 @@
 [
     {
-        "title": "Django for Beginners",
-        "author": "William S. Vincent",
+        "title": "testing",
+        "author": "Dinh Bao Thanh",
         "published_year": 2022,
-        "genre": "Programming"
+        "genre": "test"
     },
     {
-        "title": "Fluent Python",
+        "title": "abcdef",
         "author": "Luciano Ramalho",
-        "published_year": 2020,
-        "genre": "Python"
+        "published_year": 2021,
+        "genre": "C++"
     }
 ]
