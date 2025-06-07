@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Django for Beginners",
+        "author": "William S. Vincent",
+        "published_year": 2022,
+        "genre": "Programming"
+    },
+    {
+        "title": "Fluent Python",
+        "author": "Luciano Ramalho",
+        "published_year": 2020,
+        "genre": "Python"
+    }
+]

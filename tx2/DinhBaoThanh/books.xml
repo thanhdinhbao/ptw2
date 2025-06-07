@@ -1,0 +1,14 @@
+<books>
+  <book>
+    <title>Django Unleashed</title>
+    <author>Andrew Pinkham</author>
+    <published_year>2016</published_year>
+    <genre>Programming</genre>
+  </book>
+  <book>
+    <title>Effective Python</title>
+    <author>Brett Slatkin</author>
+    <published_year>2015</published_year>
+    <genre>Python</genre>
+  </book>
+</books>

@@ -1,0 +1,35 @@
+<h2>Danh sách sách</h2>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Tìm theo tên hoặc tác giả" value="{{ request.GET.q }}">
+    <button type="submit">Tìm</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Tiêu đề</th>
+        <th>Tác giả</th>
+        <th>Năm</th>
+        <th>Thể loại</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.published_year }}</td>
+        <td>{{ book.genre }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div>
+    {% if books.has_previous %}
+        <a href="?page={{ books.previous_page_number }}&q={{ request.GET.q }}">Trang trước</a>
+    {% endif %}
+
+    <span>Trang {{ books.number }} / {{ books.paginator.num_pages }}</span>
+
+    {% if books.has_next %}
+        <a href="?page={{ books.next_page_number }}&q={{ request.GET.q }}">Trang sau</a>
+    {% endif %}
+</div>

@@ -1,0 +1,45 @@
+python manage.py shell
+
+//JSON
+import json
+from T2022601124.models import Book 
+
+with open("books.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+for item in data:
+    Book.objects.create(**item)
+
+# Thêm bản ghi của bạn theo yêu cầu đề
+Book.objects.create(
+    title="2022601124",
+    author="Dinh Bao Thanh",
+    published_year=2025,
+    genre="PythonWeb"
+)
+//XML
+import xml.etree.ElementTree as ET
+from T2022601124.models import Book  
+
+tree = ET.parse('books.xml')
+root = tree.getroot()
+
+for book_elem in root.findall('book'):
+    title = book_elem.find('title').text
+    author = book_elem.find('author').text
+    published_year = int(book_elem.find('published_year').text)
+    genre = book_elem.find('genre').text
+
+    Book.objects.create(
+        title=title,
+        author=author,
+        published_year=published_year,
+        genre=genre
+    )
+
+Book.objects.create(
+    title="2025123456",
+    author="Nguyễn Văn A",
+    published_year=2025,
+    genre="PythonWeb"
+)
