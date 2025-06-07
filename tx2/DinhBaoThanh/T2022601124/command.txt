@@ -1,6 +1,6 @@
 python manage.py shell
 
-//JSON
+//JSON Shell
 import json
 from T2022601124.models import Book 
 
@@ -17,6 +17,26 @@ Book.objects.create(
     published_year=2025,
     genre="PythonWeb"
 )
+
+//JSON Serializer
+import json
+from 2025123456.serializers import BookSerializer
+from 2025123456.models import Book
+
+with open("books.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+for item in data:
+    serializer = BookSerializer(data=item)
+    if serializer.is_valid():
+        serializer.save()
+        print(f"✅ Thêm thành công: {item['title']}")
+    else:
+        print(f"❌ Lỗi với dữ liệu: {item}")
+        print(serializer.errors)
+
+
+
 //XML
 import xml.etree.ElementTree as ET
 from T2022601124.models import Book  
